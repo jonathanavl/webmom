@@ -11,10 +11,11 @@ from api.commands import setup_commands
 
 ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../dist/')
+public_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../public/')  # <--- nueva línea
+
 app = Flask(__name__)
 CORS(app)  # <--- AGREGADO
 app.url_map.strict_slashes = False
-
 
 # database condiguration
 db_url = os.getenv("DATABASE_URL")
@@ -38,20 +39,21 @@ setup_commands(app)
 app.register_blueprint(api, url_prefix='/api')
 
 # Handle/serialize errors like a JSON object
-
-
 @app.errorhandler(APIException)
 def handle_invalid_usage(error):
     return jsonify(error.to_dict()), error.status_code
 
 # generate sitemap with all your endpoints
-
-
 @app.route('/')
 def sitemap():
     if ENV == "development":
         return generate_sitemap(app)
     return send_from_directory(static_file_dir, 'index.html')
+
+# Servir archivos estáticos de la carpeta public
+@app.route('/public/<path:filename>')
+def serve_public_files(filename):
+    return send_from_directory(public_dir, filename)
 
 # any other endpoint will try to serve it like a static file
 @app.route('/<path:path>', methods=['GET'])
