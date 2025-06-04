@@ -7,7 +7,7 @@ import { StoreProvider } from './hooks/useGlobalReducer'
 import { BackendURL } from './components/BackendURL'
 
 const Main = () => {
-    const backendUrl = import.meta.env.VITE_BACKEND_URL || "https://sorteo-mary-kay.onrender.com"
+    const backendUrl = import.meta.env.VITE_BACKEND_URL || "https://sample-service-name-kfsd.onrender.com"
 
     if (!backendUrl) return (
         <React.StrictMode>
