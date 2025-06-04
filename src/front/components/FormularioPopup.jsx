@@ -11,7 +11,7 @@ export const FormularioPopup = ({ isOpen, onClose }) => {
   const [success, setSuccess] = useState(null);
 
   useEffect(() => {
-    fetch("https://sample-service-name-kfsd.onrender.com/api/available-numbers")
+    fetch("https://sorteo-mary-key.onrender.com/api/available-numbers")
       .then(res => res.json())
       .then(data => setAvailableNumbers(data.available_numbers))
       .catch(() => setError("No se pudieron cargar los números disponibles"));
@@ -31,7 +31,7 @@ export const FormularioPopup = ({ isOpen, onClose }) => {
       return;
     }
 
-    fetch("https://sample-service-name-kfsd.onrender.com//api/participations", {
+    fetch("https://sorteo-mary-key.onrender.com//api/participations", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
