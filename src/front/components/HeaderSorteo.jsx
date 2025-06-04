@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import sorteoImg from "../assets/img/sorteo-marykay.png";
+import mama from "../assets/img/mama.jpg";
 import { FormularioPopup } from "./FormularioPopup";
 
 export const HeaderSorteo = () => {
@@ -25,6 +26,25 @@ export const HeaderSorteo = () => {
         </div>
       </header>
 
+ <header className="header-sorteo">
+        <img src={mama} alt="Sorteo Mary Kay" className="header-sorteo-imagemom" />
+        <div className="header-sorteo-content">
+          <h1>Consultora de belleza:</h1>
+          <h2>Priscila Marina</h2>
+          <p>
+      Como <strong>tu consultora de confianza</strong>, me dedico a cuidar de tu bienestar y realzar tu belleza. Mi compromiso es ofrecerte productos de <strong>alta calidad</strong> que se adapten a tus necesidades.
+    </p>
+    <p>
+      Una vez hayas seleccionado tus dos números, puedes contactarme directamente al siguiente número para realizar el pago vía <strong>Bizum</strong> y confirmar tu inscripción de manera <strong>rápida y segura.</strong>
+    </p>
+          <button
+  className="btn-sorteo"
+  onClick={() => window.location.href = 'https://w.app/h1abkk'}
+>
+            Contactame
+          </button>
+        </div>
+      </header>
       <FormularioPopup isOpen={mostrarFormulario} onClose={() => setMostrarFormulario(false)} />
     </>
   );

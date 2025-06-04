@@ -87,6 +87,13 @@ small {
   object-fit: contain;
   padding: 10px;
 }
+.header-sorteo-imagemom {
+  border-radius: 30px;
+  max-width: 250px;
+  width: 100%;
+  object-fit: contain;
+  margin-right: 50px;
+}
 
 .header-sorteo-content {
   max-width: 700px;
@@ -120,6 +127,7 @@ small {
   transition: background-color 0.3s ease;
 }
 
+
 .btn-sorteo:hover {
   background-color: #a1155c; /* un rosa un poco más oscuro */
 }
@@ -135,6 +143,11 @@ small {
   .header-sorteo-image {
     max-width: 90vw;
   }
+  .header-sorteo-imagemom {
+  max-width: 90vw;
+  object-fit: contain;
+}
+
 }
 
 
