@@ -39,9 +39,19 @@ def handle_invalid_usage(error):
 def serve_index():
     return send_from_directory(static_file_dir, 'index.html')
 
-@app.route('/assets/<path:filename>')
-def serve_assets(filename):
-    return send_from_directory(os.path.join(static_file_dir, 'assets'), filename)
+@app.route('/<path:path>', methods=['GET'])
+def serve_any_other_file(path):
+    # No interceptar assets
+    if path.startswith('assets/'):
+        return send_from_directory(static_file_dir, path)
+
+    full_path = os.path.join(static_file_dir, path)
+    if not os.path.isfile(full_path):
+        path = 'index.html'
+    response = send_from_directory(static_file_dir, path)
+    response.cache_control.max_age = 0
+    return response
+
 
 
 @app.route('/public/<path:filename>')
