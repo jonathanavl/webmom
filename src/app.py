@@ -43,6 +43,7 @@ def serve_index():
 def serve_assets(filename):
     return send_from_directory(os.path.join(static_file_dir, 'assets'), filename)
 
+
 @app.route('/public/<path:filename>')
 def serve_public_files(filename):
     return send_from_directory(public_dir, filename)
